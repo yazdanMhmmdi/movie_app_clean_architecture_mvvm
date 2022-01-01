@@ -1,10 +1,10 @@
 import 'package:movie_app_clean_architecture_mvvm/src/core/utils/constants.dart';
 
-class MovieUpcommingRequestParams {
+class MovieUpcomingRequestParams {
   final String? apiKey;
   final String? language;
   final String? page;
-  MovieUpcommingRequestParams({
+  MovieUpcomingRequestParams({
     this.apiKey = kApiKey,
     this.page = "1",
     this.language = kLanguage,

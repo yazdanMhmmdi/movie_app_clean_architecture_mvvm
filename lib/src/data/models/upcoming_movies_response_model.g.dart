@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'upcomming_movies_response_model.dart';
+part of 'upcoming_movies_response_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
