@@ -13,7 +13,7 @@ UpcomingMoviesResponseModel _$UpcomingMoviesResponseModelFromJson(
       results: (json['results'] as List<dynamic>?)
           ?.map((e) => MovieModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      page: json['page'] as String?,
+      page: json['page'] as int?,
       dates: (json['dates'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, e as String),
       ),

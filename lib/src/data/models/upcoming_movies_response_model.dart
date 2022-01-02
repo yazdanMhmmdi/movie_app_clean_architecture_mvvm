@@ -5,7 +5,7 @@ part 'upcoming_movies_response_model.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake)
 class UpcomingMoviesResponseModel {
   Map<String, String>? dates;
-  String? page;
+  int? page;
   List<MovieModel>? results;
   int? totalPages;
   int? totalResults;
