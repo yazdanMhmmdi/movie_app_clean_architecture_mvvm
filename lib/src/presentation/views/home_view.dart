@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:lottie/lottie.dart';
+import 'package:movie_app_clean_architecture_mvvm/src/core/utils/assets.dart';
 import 'package:movie_app_clean_architecture_mvvm/src/core/utils/colors.dart';
 import 'package:movie_app_clean_architecture_mvvm/src/domain/entities/movie.dart';
 import 'package:movie_app_clean_architecture_mvvm/src/presentation/view_models/home_view_model.dart';
 import 'package:movie_app_clean_architecture_mvvm/src/presentation/widgets/logo_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app_clean_architecture_mvvm/src/presentation/widgets/movie_item_widget.dart';
+import 'package:movie_app_clean_architecture_mvvm/src/presentation/widgets/request_failure_widget.dart';
 import 'package:movie_app_clean_architecture_mvvm/src/presentation/widgets/title_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -28,9 +32,17 @@ class _HomeViewState extends State<HomeView> {
         body: Directionality(
       textDirection: TextDirection.rtl,
       child: Consumer<HomeViewModel>(builder: (_, value, __) {
-        return value.loading
-            ? const Center(child: CircularProgressIndicator())
-            : SingleChildScrollView(
+        return Stack(
+          children: [
+            if (value.loading) ...[
+              Center(
+                child: LoadingAnimationWidget.staggeredDotWave(
+                    color: IColors.titleColor, size: 40),
+              ),
+            ] else if (value.error) ...[
+              const RequestFailureWidget(),
+            ] else ...[
+              SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -90,7 +102,10 @@ class _HomeViewState extends State<HomeView> {
                         )),
                   ],
                 ),
-              );
+              ),
+            ]
+          ],
+        );
       }),
     ));
   }

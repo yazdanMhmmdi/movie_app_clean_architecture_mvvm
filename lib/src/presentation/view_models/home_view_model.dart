@@ -44,6 +44,7 @@ class HomeViewModel extends ChangeNotifier {
       loading = false;
     } else {
       error = true;
+      loading = false;
     }
   }
 
@@ -56,8 +57,7 @@ class HomeViewModel extends ChangeNotifier {
   bool get loading => _loading!;
 
   set error(bool _) {
-    error = _;
-    notifyListeners();
+    _error = _;
   }
 
   bool get error => _error!;
