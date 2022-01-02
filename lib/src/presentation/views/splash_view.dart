@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:movie_app_clean_architecture_mvvm/src/core/utils/colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,11 +10,18 @@ class SplashView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    pushToNextPage(context);
     return const Scaffold(
       backgroundColor: IColors.background,
       body: Center(
         child: LogoWidget(),
       ),
     );
+  }
+
+  void pushToNextPage(context) {
+    Timer(const Duration(seconds: 2), () {
+      Navigator.pushNamed(context, '/home');
+    });
   }
 }
