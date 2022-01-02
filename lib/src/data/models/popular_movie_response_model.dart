@@ -5,7 +5,7 @@ part 'popular_movie_response_model.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class PopularMovieResponseModel {
-  String? page;
+  int? page;
   List<MovieModel>? results;
   int? totalPages;
   int? totalResults;

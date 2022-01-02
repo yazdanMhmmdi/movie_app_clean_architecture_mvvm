@@ -9,7 +9,7 @@ part of 'popular_movie_response_model.dart';
 PopularMovieResponseModel _$PopularMovieResponseModelFromJson(
         Map<String, dynamic> json) =>
     PopularMovieResponseModel(
-      page: json['page'] as String?,
+      page: json['page'] as int?,
       results: (json['results'] as List<dynamic>?)
           ?.map((e) => MovieModel.fromJson(e as Map<String, dynamic>))
           .toList(),
