@@ -7,7 +7,7 @@ import 'package:retrofit/retrofit.dart';
 
 part 'movie_api_service.g.dart';
 
-@RestApi(baseUrl: kBaseUrl)
+@RestApi(baseUrl: kBaseApiUrl)
 abstract class MovieApiService {
   factory MovieApiService(Dio dio, {String baseUrl}) = _MovieApiService;
 

@@ -5,6 +5,7 @@ import 'package:movie_app_clean_architecture_mvvm/src/data/repositories/movie_re
 import 'package:movie_app_clean_architecture_mvvm/src/domain/repositories/movie_repository.dart';
 import 'package:movie_app_clean_architecture_mvvm/src/domain/usecases/get_popular_movies_usecase.dart';
 import 'package:movie_app_clean_architecture_mvvm/src/domain/usecases/get_upcomming_movies_usecase.dart';
+import 'package:movie_app_clean_architecture_mvvm/src/presentation/view_models/home_view_model.dart';
 
 final injector = GetIt.instance;
 
@@ -13,12 +14,17 @@ Future<void> initializeDependencies() async {
   injector.registerSingleton<Dio>(Dio());
   //  Movie API
   injector.registerSingleton<MovieApiService>(MovieApiService(injector()));
+
+  //  Repositories
+  injector.registerSingleton<MovieRepository>(MovieRepositoryImpl(injector()));
+
   //  Usecases
   injector.registerSingleton<GetPopularMoviesUseCase>(
       GetPopularMoviesUseCase(injector()));
   injector.registerSingleton<GetUpcomingMovieUseCase>(
       GetUpcomingMovieUseCase(injector()));
 
-  //  Repositories
-  injector.registerSingleton<MovieRepository>(MovieRepositoryImpl(injector()));
+  //  View Models
+  injector.registerFactory<HomeViewModel>(
+      () => HomeViewModel(injector(), injector()));
 }
