@@ -30,7 +30,8 @@ class HomeViewModel extends ChangeNotifier {
   //  Events
   void getUpcommingMovies() async {
     DataState<UpcomingMoviesResponseModel> dataState =
-        await _upcomingMovieUseCase(params: MovieUpcomingRequestParams());
+        await _upcomingMovieUseCase(
+            params: MovieUpcomingRequestParams(language: 'en-US'));
     if (dataState is DataSuccess && dataState.data!.results!.isNotEmpty) {
       List<Movie>? movies = dataState.data!.results!;
       _upcommingMovies!.addAll(movies);
@@ -42,7 +43,8 @@ class HomeViewModel extends ChangeNotifier {
 
   void getPopularMovies() async {
     DataState<PopularMovieResponseModel> dataState =
-        await _popularMoviesUseCase(params: MoviesPopularRequestParams());
+        await _popularMoviesUseCase(
+            params: MoviesPopularRequestParams(language: 'en-US'));
     if (dataState is DataSuccess && dataState.data!.results!.isNotEmpty) {
       List<Movie>? movies = dataState.data!.results!;
       _popularMovies!.addAll(movies);

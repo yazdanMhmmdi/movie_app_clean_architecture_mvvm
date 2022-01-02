@@ -28,7 +28,7 @@ class _HomeViewState extends State<HomeView> {
         body: Directionality(
       textDirection: TextDirection.rtl,
       child: Consumer<HomeViewModel>(builder: (_, value, __) {
-        return value.upcomingLoading && value.popularLoading
+        return value.loading
             ? const Center(child: CircularProgressIndicator())
             : SingleChildScrollView(
                 child: Column(
