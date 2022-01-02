@@ -10,15 +10,13 @@ import 'package:movie_app_clean_architecture_mvvm/src/domain/usecases/get_upcomm
 
 class HomeViewModel extends ChangeNotifier {
   HomeViewModel(this._upcomingMovieUseCase, this._popularMoviesUseCase) {
-    getUpcommingMovies();
-    getPopularMovies();
+    getMovies();
   }
 
   GetUpcomingMovieUseCase _upcomingMovieUseCase;
   GetPopularMoviesUseCase _popularMoviesUseCase;
 
-  bool? _upcommingLoading = true;
-  bool? _popularLoading = true;
+  bool? _loading = true;
 
   bool? _error = false;
 
@@ -28,49 +26,37 @@ class HomeViewModel extends ChangeNotifier {
   int s = 0;
 
   //  Events
-  void getUpcommingMovies() async {
+  void getMovies() async {
     DataState<UpcomingMoviesResponseModel> dataState =
         await _upcomingMovieUseCase(
-            params: MovieUpcomingRequestParams(language: 'en-US'));
-    if (dataState is DataSuccess && dataState.data!.results!.isNotEmpty) {
-      List<Movie>? movies = dataState.data!.results!;
-      _upcommingMovies!.addAll(movies);
-      upcomingLoading = false;
-    } else {
-      error = true;
-    }
-  }
+            params: MovieUpcomingRequestParams(language: 'fa-IR'));
 
-  void getPopularMovies() async {
-    DataState<PopularMovieResponseModel> dataState =
+    DataState<PopularMovieResponseModel> dataState2 =
         await _popularMoviesUseCase(
-            params: MoviesPopularRequestParams(language: 'en-US'));
-    if (dataState is DataSuccess && dataState.data!.results!.isNotEmpty) {
-      List<Movie>? movies = dataState.data!.results!;
-      _popularMovies!.addAll(movies);
-      popularLoading = false;
+            params: MoviesPopularRequestParams(language: 'fa-IR'));
+
+    if (dataState is DataSuccess &&
+        dataState2 is DataSuccess &&
+        dataState.data!.results!.isNotEmpty &&
+        dataState2.data!.results!.isNotEmpty) {
+      _upcommingMovies!.addAll(dataState.data!.results!);
+      _popularMovies!.addAll(dataState2.data!.results!);
+      loading = false;
     } else {
       error = true;
     }
   }
 
   //  Getters and Setters
-  set upcomingLoading(bool _loading) {
-    _upcommingLoading = _loading;
+  set loading(bool _) {
+    _loading = _;
     notifyListeners();
   }
 
-  bool get upcomingLoading => _upcommingLoading!;
+  bool get loading => _loading!;
 
-  set popularLoading(bool e) {
-    _popularLoading = e;
-    notifyListeners();
-  }
-
-  bool get popularLoading => _popularLoading!;
-
-  set error(bool e) {
-    _error = e;
+  set error(bool _) {
+    error = _;
     notifyListeners();
   }
 
