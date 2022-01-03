@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         designSize: const Size(360, 640),
         minTextAdapt: true,
         builder: () => MaterialApp(
-          title: 'Flutter Demo',
+          title: 'فیلیما',
           theme: AppTheme.dark,
           onGenerateRoute: AppRouter.onGeneratedRoutes,
           scrollBehavior: MyCustomScrollBehavior(),

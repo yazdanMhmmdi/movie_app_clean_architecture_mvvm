@@ -1,4 +1,4 @@
-package com.example.movie_app_clean_architecture_mvvm
+package ir.yazdamohammadi.filima
 
 import io.flutter.embedding.android.FlutterActivity
 

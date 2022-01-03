@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.movie_app_clean_architecture_mvvm">
+    package="ir.yazdamohammadi.filima">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="movie_app_clean_architecture_mvvm"
+        android:label="فیلیما"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
