@@ -23,13 +23,14 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider<HomeViewModel>(
       create: (_) => injector(),
       child: ScreenUtilInit(
-        designSize: const Size(360, 640), //TODO:
+        designSize: const Size(360, 640), 
         minTextAdapt: true,
         builder: () => MaterialApp(
           title: 'Flutter Demo',
           theme: AppTheme.dark,
           onGenerateRoute: AppRouter.onGeneratedRoutes,
           scrollBehavior: MyCustomScrollBehavior(),
+          debugShowCheckedModeBanner: false,
         ),
       ),
     );

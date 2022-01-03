@@ -42,65 +42,67 @@ class _HomeViewState extends State<HomeView> {
             ] else if (value.error) ...[
               const RequestFailureWidget(),
             ] else ...[
-              SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: 39.h),
-                    const Center(child: LogoWidget()),
-                    SizedBox(height: 39.h),
-                    TitleWidget(text: "به زودی"),
-                    SizedBox(height: 16.h),
-                    SizedBox(
-                        height: 198.h,
-                        width: double.infinity,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          physics: const BouncingScrollPhysics(),
-                          children: [
-                            ...List<Widget>.from(
-                              value.upcomingMovies!.map(
-                                (e) => Builder(
-                                  builder: (context) => MovieItemWidget(
-                                    movieModel: e,
-                                    onTap: () => Navigator.pushNamed(
-                                      context,
-                                      '/details',
-                                      arguments: e,
+              SafeArea(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 16.h),
+                      const Center(child: LogoWidget()),
+                      SizedBox(height: 16.h),
+                      TitleWidget(text: "به زودی"),
+                      SizedBox(height: 16.h),
+                      SizedBox(
+                          height: 198.h,
+                          width: double.infinity,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            physics: const BouncingScrollPhysics(),
+                            children: [
+                              ...List<Widget>.from(
+                                value.upcomingMovies!.map(
+                                  (e) => Builder(
+                                    builder: (context) => MovieItemWidget(
+                                      movieModel: e,
+                                      onTap: () => Navigator.pushNamed(
+                                        context,
+                                        '/details',
+                                        arguments: e,
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
-                        )),
-                    SizedBox(height: 20.h),
-                    TitleWidget(text: "محبوب ترین ها"),
-                    SizedBox(height: 16.h),
-                    SizedBox(
-                        height: 198.h,
-                        width: double.infinity,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          physics: const BouncingScrollPhysics(),
-                          children: [
-                            ...List<Widget>.from(
-                              value.popularMovies!.map(
-                                (e) => Builder(
-                                  builder: (context) => MovieItemWidget(
-                                    movieModel: e,
-                                    onTap: () => Navigator.pushNamed(
-                                      context,
-                                      '/details',
-                                      arguments: e,
+                            ],
+                          )),
+                      SizedBox(height: 20.h),
+                      TitleWidget(text: "محبوب ترین ها"),
+                      SizedBox(height: 16.h),
+                      SizedBox(
+                          height: 198.h,
+                          width: double.infinity,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            physics: const BouncingScrollPhysics(),
+                            children: [
+                              ...List<Widget>.from(
+                                value.popularMovies!.map(
+                                  (e) => Builder(
+                                    builder: (context) => MovieItemWidget(
+                                      movieModel: e,
+                                      onTap: () => Navigator.pushNamed(
+                                        context,
+                                        '/details',
+                                        arguments: e,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            )
-                          ],
-                        )),
-                  ],
+                              )
+                            ],
+                          )),
+                    ],
+                  ),
                 ),
               ),
             ]

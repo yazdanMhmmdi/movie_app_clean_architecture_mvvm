@@ -36,6 +36,7 @@ flutter:
   assets:
     - assets/images/placeholder.png
     - assets/images/placeholder_large.png
+    - assets/images/logo.png
     - assets/lotties/no_network.json
     - assets/lotties/loading.json
   fonts:

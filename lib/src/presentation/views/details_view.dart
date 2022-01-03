@@ -37,6 +37,9 @@ class _DetailsViewState extends State<DetailsView> {
                 ),
               ),
             ),
+            SizedBox(
+              height: 8.h,
+            ),
             Center(
               child: Text(
                 widget.movie.releaseDate!,
@@ -49,24 +52,27 @@ class _DetailsViewState extends State<DetailsView> {
             ),
             SizedBox(height: 16.h),
             if (widget.movie.overview!.isNotEmpty) ...[
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.h),
-                child: Text(widget.movie.overview!,
-                    style: TextStyle(
-                      color: IColors.subTitleColor,
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    textAlign: TextAlign.right),
+              Directionality(
+                textDirection: TextDirection.rtl,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.h),
+                  child: Text(widget.movie.overview!,
+                      style: TextStyle(
+                        color: IColors.titleColor,
+                        fontSize: 20.sp,
+                        letterSpacing: 1.5,
+                        height: 1.4,
+                      ),
+                      textAlign: TextAlign.justify),
+                ),
               ),
             ] else ...[
               Center(
                 child: Text(
                   "متنی جهت نمایش وجود ندارد",
                   style: TextStyle(
-                    color: IColors.subTitleColor,
+                    color: IColors.titleColor,
                     fontSize: 18.sp,
-                    fontWeight: FontWeight.bold,
                   ),
                 ),
               )
@@ -131,7 +137,7 @@ class _DetailsViewState extends State<DetailsView> {
       mainAxisSize: MainAxisSize.max,
       children: [
         Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.only(top: 32, right: 16),
           child: IconButton(
               onPressed: () => Navigator.pop(context),
               icon: Icon(
