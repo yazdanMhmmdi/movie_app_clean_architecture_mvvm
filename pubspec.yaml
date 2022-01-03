@@ -13,6 +13,7 @@ dependencies:
   equatable: ^2.0.3
   flutter:
     sdk: flutter
+  flutter_native_splash: ^1.3.3
   flutter_screenutil: ^5.0.2
   get_it: ^7.2.0
   json_annotation: ^4.4.0
@@ -43,3 +44,5 @@ flutter:
         - asset: assets/fonts/iransansregular.ttf
         - asset: assets/fonts/iransansbold.ttf
           weight: 700
+flutter_native_splash:
+  color: "#171821"
