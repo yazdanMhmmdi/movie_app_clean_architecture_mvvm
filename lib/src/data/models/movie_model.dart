@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/domain/entities/movie.dart';
+import 'package:movie_app_clean_architecture_mvvm/src/domain/domain.dart';
+
 part 'movie_model.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)

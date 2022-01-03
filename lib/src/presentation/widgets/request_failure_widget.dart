@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/core/utils/assets.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/core/utils/colors.dart';
+import 'package:movie_app_clean_architecture_mvvm/src/core/core.dart';
 
 class RequestFailureWidget extends StatelessWidget {
   const RequestFailureWidget({Key? key}) : super(key: key);
@@ -13,7 +12,7 @@ class RequestFailureWidget extends StatelessWidget {
         child: Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Container(
+        SizedBox(
             width: 200.w,
             height: 200.h,
             child: Lottie.asset(Assets.noNetworkLottie)),

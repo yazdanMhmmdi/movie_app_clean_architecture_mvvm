@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/core/utils/colors.dart';
+import 'package:movie_app_clean_architecture_mvvm/src/core/core.dart';
 
 class TitleWidget extends StatelessWidget {
   TitleWidget({Key? key, required this.text}) : super(key: key);

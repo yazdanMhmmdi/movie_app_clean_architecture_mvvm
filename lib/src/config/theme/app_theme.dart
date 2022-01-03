@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/core/utils/colors.dart';
+import 'package:movie_app_clean_architecture_mvvm/src/core/core.dart';
 
 class AppTheme {
   static ThemeData? get dark {

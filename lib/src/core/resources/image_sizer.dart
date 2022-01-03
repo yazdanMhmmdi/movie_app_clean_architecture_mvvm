@@ -1,4 +1,4 @@
-import 'package:movie_app_clean_architecture_mvvm/src/core/utils/constants.dart';
+import 'package:movie_app_clean_architecture_mvvm/src/core/core.dart';
 
 class ImageSizer {
   static String w200(String path) {

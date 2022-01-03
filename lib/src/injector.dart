@@ -1,11 +1,8 @@
 import 'package:get_it/get_it.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/data/datasources/remote/movie_api_service.dart';
 import 'package:dio/dio.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/data/repositories/movie_repository_impl.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/domain/repositories/movie_repository.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/domain/usecases/get_popular_movies_usecase.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/domain/usecases/get_upcomming_movies_usecase.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/presentation/view_models/home_view_model.dart';
+import 'package:movie_app_clean_architecture_mvvm/src/data/data.dart';
+import 'package:movie_app_clean_architecture_mvvm/src/domain/domain.dart';
+import 'package:movie_app_clean_architecture_mvvm/src/presentation/presentation.dart';
 
 final injector = GetIt.instance;
 

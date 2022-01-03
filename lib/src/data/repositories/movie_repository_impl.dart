@@ -1,14 +1,9 @@
 import 'dart:io';
 
-import 'package:movie_app_clean_architecture_mvvm/src/data/datasources/remote/movie_api_service.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/data/models/popular_movie_response_model.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/data/models/upcoming_movies_response_model.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/domain/entities/movie.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/core/resources/data_state.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/core/params/movie_upcoming_request.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/core/params/movie_popular_request.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/domain/repositories/movie_repository.dart';
-import 'package:retrofit/dio.dart';
+import 'package:movie_app_clean_architecture_mvvm/src/data/data.dart';
+import 'package:movie_app_clean_architecture_mvvm/src/domain/domain.dart';
+import 'package:movie_app_clean_architecture_mvvm/src/core/core.dart';
+
 import 'package:dio/dio.dart';
 
 class MovieRepositoryImpl implements MovieRepository {

@@ -1,29 +1,21 @@
-import 'package:flutter/cupertino.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/core/params/movie_popular_request.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/core/params/movie_upcoming_request.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/core/resources/data_state.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/data/models/popular_movie_response_model.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/data/models/upcoming_movies_response_model.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/domain/entities/movie.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/domain/usecases/get_popular_movies_usecase.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/domain/usecases/get_upcomming_movies_usecase.dart';
+import 'package:flutter/material.dart';
+import 'package:movie_app_clean_architecture_mvvm/src/core/core.dart';
+import 'package:movie_app_clean_architecture_mvvm/src/data/data.dart';
+import 'package:movie_app_clean_architecture_mvvm/src/domain/domain.dart';
 
 class HomeViewModel extends ChangeNotifier {
   HomeViewModel(this._upcomingMovieUseCase, this._popularMoviesUseCase) {
     getMovies();
   }
 
-  GetUpcomingMovieUseCase _upcomingMovieUseCase;
-  GetPopularMoviesUseCase _popularMoviesUseCase;
+  final GetUpcomingMovieUseCase _upcomingMovieUseCase;
+  final GetPopularMoviesUseCase _popularMoviesUseCase;
 
   bool? _loading = true;
-
   bool? _error = false;
 
   List<Movie>? _upcommingMovies = [];
   List<Movie>? _popularMovies = [];
-
-  int s = 0;
 
   //  Events
   void getMovies() async {
