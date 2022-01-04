@@ -8,3 +8,5 @@ const String? kApiKey = '03df62f0b7d7601bd76409972e41f171';
 const String? kLanguage = 'fa-IR';
 //  Sort Option
 const String? kSortBy = 'popularity.desc';
+//  Request timeout
+const int? kRequestTimeout = 5000;
