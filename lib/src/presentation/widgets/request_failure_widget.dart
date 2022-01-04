@@ -19,7 +19,7 @@ class RequestFailureWidget extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: Text(
-            'ارتباط با اینترنت قطع شد لطفا ارتباط با اینترنت را بررسی کنید.',
+            'ارتباط با سرور برقرار نشد از ارتباط خود با اینترنت مطمئن شوید و فیلترشکن خود را فعال کنید.',
             style: TextStyle(
               fontSize: 18.sp,
               color: IColors.titleColor,

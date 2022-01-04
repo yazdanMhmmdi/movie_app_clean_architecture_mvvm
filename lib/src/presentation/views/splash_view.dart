@@ -20,7 +20,7 @@ class SplashView extends StatelessWidget {
 
   void pushToNextPage(context) {
     Timer(const Duration(seconds: 2), () {
-      Navigator.pushNamed(context, '/home');
+      Navigator.pushNamedAndRemoveUntil(context, '/home', (_) => true);
     });
   }
 }
