@@ -1,16 +1,18 @@
-import 'package:movie_app_clean_architecture_mvvm/src/core/core.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/data/data.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/domain/domain.dart';
+import 'package:dartz/dartz.dart';
+import '../../core/core.dart';
+import '../../core/error/failure.dart';
+import '../../data/data.dart';
+import '../domain.dart';
 
 class GetUpcomingMovieUseCase
     implements
-        UseCase<DataState<UpcomingMoviesResponseModel>,
-            MovieUpcomingRequestParams?> {
+        UseCase<UpcomingMoviesResponseModel, MovieUpcomingRequestParams?> {
   final MovieRepository? _repository;
   GetUpcomingMovieUseCase(this._repository);
+
   @override
-  Future<DataState<UpcomingMoviesResponseModel>> call(
-      {MovieUpcomingRequestParams? params}) async {
-    return _repository!.getUpcomingMovies(params!);
+  Future<Either<Failure, UpcomingMoviesResponseModel>> call(
+      MovieUpcomingRequestParams? params) async {
+    return await _repository!.getUpcomingMovies(params!);
   }
 }

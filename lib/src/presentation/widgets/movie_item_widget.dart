@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/core/core.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/domain/domain.dart';
+import '../../core/core.dart';
+import '../../domain/domain.dart';
 
 class MovieItemWidget extends StatelessWidget {
   MovieItemWidget({Key? key, required this.movieModel, required this.onTap})

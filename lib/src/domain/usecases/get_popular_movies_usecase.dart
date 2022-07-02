@@ -1,17 +1,17 @@
-import 'package:movie_app_clean_architecture_mvvm/src/core/core.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/data/data.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/domain/domain.dart';
+import 'package:dartz/dartz.dart';
+import '../../core/core.dart';
+import '../../core/error/failure.dart';
+import '../../data/data.dart';
+import '../domain.dart';
 
 class GetPopularMoviesUseCase
-    implements
-        UseCase<DataState<PopularMovieResponseModel>,
-            MoviesPopularRequestParams?> {
+    implements UseCase<PopularMovieResponseModel, MoviesPopularRequestParams?> {
   GetPopularMoviesUseCase(this._repository);
   final MovieRepository? _repository;
 
   @override
-  Future<DataState<PopularMovieResponseModel>> call(
-      {MoviesPopularRequestParams? params}) {
-    return _repository!.getPopularMovies(params!);
+  Future<Either<Failure, PopularMovieResponseModel>> call(
+      MoviesPopularRequestParams? params) async {
+    return await _repository!.getPopularMovies(params!);
   }
 }

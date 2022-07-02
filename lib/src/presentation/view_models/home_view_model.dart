@@ -1,7 +1,8 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/core/core.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/data/data.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/domain/domain.dart';
+
+import '../../core/core.dart';
+import '../../domain/domain.dart';
 
 class HomeViewModel extends ChangeNotifier {
   HomeViewModel(this._upcomingMovieUseCase, this._popularMoviesUseCase) {
@@ -19,25 +20,32 @@ class HomeViewModel extends ChangeNotifier {
 
   //  Events
   void getMovies() async {
-    DataState<UpcomingMoviesResponseModel> dataState =
-        await _upcomingMovieUseCase(
-            params: MovieUpcomingRequestParams(language: 'fa-IR'));
+    final upcomingMoviesResult = await _upcomingMovieUseCase(
+        MovieUpcomingRequestParams(language: 'fa-IR'));
 
-    DataState<PopularMovieResponseModel> dataState2 =
-        await _popularMoviesUseCase(
-            params: MoviesPopularRequestParams(language: 'fa-IR'));
+    final popularMoviesResult = await _popularMoviesUseCase(
+        MoviesPopularRequestParams(language: 'fa-IR'));
 
-    if (dataState is DataSuccess &&
-        dataState2 is DataSuccess &&
-        dataState.data!.results!.isNotEmpty &&
-        dataState2.data!.results!.isNotEmpty) {
-      _upcommingMovies!.addAll(dataState.data!.results!);
-      _popularMovies!.addAll(dataState2.data!.results!);
-      loading = false;
-    } else {
+    upcomingMoviesResult.fold((left) {
       error = true;
       loading = false;
-    }
+      _upcommingMovies!.clear();
+    }, (right) {
+      if (right.results!.isNotEmpty) {
+        _upcommingMovies!.addAll(right.results!);
+        loading = false;
+      }
+    });
+    popularMoviesResult.fold((left) {
+      error = true;
+      loading = false;
+      _popularMovies!.clear();
+    }, (right) {
+      if (right.results!.isNotEmpty) {
+        _popularMovies!.addAll(right.results!);
+        loading = false;
+      }
+    });
   }
 
   //  Getters and Setters

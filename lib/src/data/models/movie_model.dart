@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/domain/domain.dart';
+import '../../domain/domain.dart';
 
 part 'movie_model.g.dart';
 

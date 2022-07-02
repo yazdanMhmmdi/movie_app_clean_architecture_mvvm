@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/core/core.dart';
+
+import '../../core/core.dart';
 
 class LogoWidget extends StatelessWidget {
   const LogoWidget({Key? key}) : super(key: key);

@@ -1,25 +1,53 @@
-import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/core/core.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/data/data.dart';
-part 'movie_api_service.g.dart';
 
-@RestApi(baseUrl: kBaseApiUrl)
-abstract class MovieApiService {
-  factory MovieApiService(Dio dio, {String baseUrl}) = _MovieApiService;
+import '../../../core/core.dart';
+import '../../../core/error/exceptions.dart';
+import '../../../core/network/remote_api_service.dart';
+import '../../../domain/entities/movie_client.dart';
+import '../../data.dart';
 
-  @GET('/discover/movie')
-  Future<HttpResponse<PopularMovieResponseModel>> getPopularMovies({
-    @Query("api_key") required String apiKey,
-    @Query("page") required String page,
-    @Query("language") required String language,
-    @Query("sort_by") required String sortBy,
-  });
+class MovieApiService extends RemoteApiService {
+  MovieClient movieClient;
 
-  @GET('/movie/upcoming')
-  Future<HttpResponse<UpcomingMoviesResponseModel>> getUpcomingMovies({
-    @Query("page") required String page,
-    @Query("language") required String language,
-    @Query("api_key") required String apiKey,
-  });
+  MovieApiService(this.movieClient);
+
+  @override
+  Future<PopularMovieResponseModel> getPopularMoviesFromApiService(
+      MoviesPopularRequestParams? params) async {
+    try {
+      final HttpResponse response = await movieClient.fetchPopularMovies(
+          apiKey: params!.apiKey!,
+          page: params.page!,
+          language: params.language!,
+          sortBy: params.sortBy!);
+
+      if (response.response.statusCode == 200) {
+        return response.data;
+      } else {
+        throw ServerException();
+      }
+    } catch (err) {
+      throw ServerException(message: err.toString());
+    }
+  }
+
+  @override
+  Future<UpcomingMoviesResponseModel> getUpcomingMoviesFromApiService(
+      MovieUpcomingRequestParams? params) async {
+    try {
+      final HttpResponse response = await movieClient.fetchUpcomingMovies(
+        apiKey: params!.apiKey!,
+        page: params.page!,
+        language: params.language!,
+      );
+
+      if (response.response.statusCode == 200) {
+        return response.data;
+      } else {
+        throw ServerException();
+      }
+    } catch (err) {
+      throw ServerException(message: err.toString());
+    }
+  }
 }

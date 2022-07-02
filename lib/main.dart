@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/presentation/presentation.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/config/config.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/injector.dart';
+import 'src/presentation/presentation.dart';
+import 'src/config/config.dart';
+import 'src/injector.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/domain/domain.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/presentation/presentation.dart';
+import '../../domain/domain.dart';
+import '../presentation.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';

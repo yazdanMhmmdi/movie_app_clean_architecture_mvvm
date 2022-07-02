@@ -1,60 +1,38 @@
-import 'dart:io';
+import 'package:dartz/dartz.dart';
 
-import 'package:movie_app_clean_architecture_mvvm/src/data/data.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/domain/domain.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/core/core.dart';
-
-import 'package:dio/dio.dart';
+import '../../core/core.dart';
+import '../../core/error/exceptions.dart';
+import '../../core/error/failure.dart';
+import '../../domain/domain.dart';
+import '../data.dart';
 
 class MovieRepositoryImpl implements MovieRepository {
   MovieRepositoryImpl(this._movieApiService);
   final MovieApiService _movieApiService;
 
   @override
-  Future<DataState<PopularMovieResponseModel>> getPopularMovies(
+  Future<Either<Failure, PopularMovieResponseModel>> getPopularMovies(
       MoviesPopularRequestParams params) async {
     try {
-      final httpResponse = await _movieApiService.getPopularMovies(
-          apiKey: params.apiKey!,
-          page: params.page!,
-          language: params.language!,
-          sortBy: params.sortBy!);
+      final response =
+          await _movieApiService.getPopularMoviesFromApiService(params);
 
-      if (httpResponse.response.statusCode == HttpStatus.ok) {
-        return DataSuccess(httpResponse.data);
-      }
-
-      return DataFailed(DioError(
-        error: httpResponse.response.statusMessage,
-        response: httpResponse.response,
-        type: DioErrorType.response,
-        requestOptions: httpResponse.response.requestOptions,
-      ));
-    } on DioError catch (e) {
-      return DataFailed(e);
+      return Right(response);
+    } on ServerException {
+      return Left(ServerFailure());
     }
   }
 
   @override
-  Future<DataState<UpcomingMoviesResponseModel>> getUpcomingMovies(
+  Future<Either<Failure, UpcomingMoviesResponseModel>> getUpcomingMovies(
       MovieUpcomingRequestParams params) async {
     try {
-      final httpResponse = await _movieApiService.getUpcomingMovies(
-          page: params.page!,
-          language: params.language!,
-          apiKey: params.apiKey!);
+      final response =
+          await _movieApiService.getUpcomingMoviesFromApiService(params);
 
-      if (httpResponse.response.statusCode == HttpStatus.ok) {
-        return DataSuccess(httpResponse.data);
-      }
-
-      return DataFailed(DioError(
-        response: httpResponse.response,
-        type: DioErrorType.response,
-        requestOptions: httpResponse.response.requestOptions,
-      ));
-    } on DioError catch (e) {
-      return DataFailed(e);
+      return Right(response);
+    } on ServerException {
+      return Left(ServerFailure());
     }
   }
 }

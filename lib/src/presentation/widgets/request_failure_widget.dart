@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/core/core.dart';
+import '../../core/core.dart';
 
 class RequestFailureWidget extends StatelessWidget {
   const RequestFailureWidget({Key? key}) : super(key: key);

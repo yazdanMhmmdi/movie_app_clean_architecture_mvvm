@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/data/data.dart';
+
+import '../data.dart';
+
 part 'popular_movie_response_model.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)

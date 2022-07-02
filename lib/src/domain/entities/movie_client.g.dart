@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'movie_api_service.dart';
+part of 'movie_client.dart';
 
 // **************************************************************************
 // RetrofitGenerator
 // **************************************************************************
 
-class _MovieApiService implements MovieApiService {
-  _MovieApiService(this._dio, {this.baseUrl}) {
+class _MovieClient implements MovieClient {
+  _MovieClient(this._dio, {this.baseUrl}) {
     baseUrl ??= 'https://api.themoviedb.org/3';
   }
 
@@ -16,7 +16,7 @@ class _MovieApiService implements MovieApiService {
   String? baseUrl;
 
   @override
-  Future<HttpResponse<PopularMovieResponseModel>> getPopularMovies(
+  Future<HttpResponse<PopularMovieResponseModel>> fetchPopularMovies(
       {required apiKey,
       required page,
       required language,
@@ -42,7 +42,7 @@ class _MovieApiService implements MovieApiService {
   }
 
   @override
-  Future<HttpResponse<UpcomingMoviesResponseModel>> getUpcomingMovies(
+  Future<HttpResponse<UpcomingMoviesResponseModel>> fetchUpcomingMovies(
       {required page, required language, required apiKey}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{

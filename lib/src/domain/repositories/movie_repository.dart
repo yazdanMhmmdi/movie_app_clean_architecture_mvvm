@@ -1,11 +1,13 @@
-import 'package:movie_app_clean_architecture_mvvm/src/core/core.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/data/data.dart';
+import 'package:dartz/dartz.dart';
+import '../../core/core.dart';
+import '../../core/error/failure.dart';
+import '../../data/data.dart';
 
 abstract class MovieRepository {
-  Future<DataState<UpcomingMoviesResponseModel>> getUpcomingMovies(
+  Future<Either<Failure, UpcomingMoviesResponseModel>> getUpcomingMovies(
       MovieUpcomingRequestParams params);
 
-  Future<DataState<PopularMovieResponseModel>> getPopularMovies(
+  Future<Either<Failure, PopularMovieResponseModel>> getPopularMovies(
     MoviesPopularRequestParams params,
   );
 }

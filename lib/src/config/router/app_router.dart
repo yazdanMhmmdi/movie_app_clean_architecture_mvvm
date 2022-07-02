@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/presentation/presentation.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/domain/domain.dart';
+import '../../presentation/presentation.dart';
+import '../../domain/domain.dart';
 
 class AppRouter {
   static Route onGeneratedRoutes(RouteSettings? settings) {

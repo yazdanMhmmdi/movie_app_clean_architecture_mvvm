@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/presentation/presentation.dart';
-import 'package:movie_app_clean_architecture_mvvm/src/core/core.dart';
+import '../presentation.dart';
+import '../../core/core.dart';
 
 class SplashView extends StatelessWidget {
   const SplashView({Key? key}) : super(key: key);
