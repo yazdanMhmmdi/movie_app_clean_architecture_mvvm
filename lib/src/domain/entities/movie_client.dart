@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+
 import '../../core/core.dart';
 import '../../data/data.dart';
+
 part 'movie_client.g.dart';
 
 @RestApi(baseUrl: kBaseApiUrl)

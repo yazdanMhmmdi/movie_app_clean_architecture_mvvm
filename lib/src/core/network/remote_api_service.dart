@@ -1,7 +1,5 @@
-import 'package:dartz/dartz.dart';
-import '../core.dart';
-import '../error/failure.dart';
 import '../../data/models/models.dart';
+import '../core.dart';
 
 abstract class RemoteApiService {
   Future<PopularMovieResponseModel> getPopularMoviesFromApiService(

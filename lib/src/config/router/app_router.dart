@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../presentation/presentation.dart';
+
 import '../../domain/domain.dart';
+import '../../presentation/presentation.dart';
 
 class AppRouter {
   static Route onGeneratedRoutes(RouteSettings? settings) {

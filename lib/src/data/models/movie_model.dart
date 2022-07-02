@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+
 import '../../domain/domain.dart';
 
 part 'movie_model.g.dart';

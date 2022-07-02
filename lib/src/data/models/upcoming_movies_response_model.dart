@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
+
 import '../data.dart';
+
 part 'upcoming_movies_response_model.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
