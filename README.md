@@ -1,16 +1,14 @@
-# movie_app_clean_architecture_mvvm
+# Filima - Movie Review App
 
-A new Flutter project.
 
-## Getting Started
+<img src="https://user-images.githubusercontent.com/71337251/148117328-1db83a07-277a-4d95-91cb-2ff6e576c479.jpg" width="250" height="450">    <img src="https://user-images.githubusercontent.com/71337251/148117340-624f8a70-18b6-43db-9dac-e7c9a484d523.jpg" width="250" height="450">    <img src="https://user-images.githubusercontent.com/71337251/148117359-66f202c9-71fc-46de-8a0d-e721fe76f166.jpg" width="250" height="450">
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+✅Clean Architecture
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+✅MVVM Design Pattern
+# Download Links:
+## [Filima v1.0.0 apk](https://drive.google.com/file/d/1c5mt-z5iamJDyd2wrx6Kga3Xk8ol8OMr/view?usp=sharing)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
