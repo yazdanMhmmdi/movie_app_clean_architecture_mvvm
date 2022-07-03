@@ -19,7 +19,7 @@ void main() {
   MovieApiService? sut;
   MockMovieClient? mockClient;
   final _model =
-      PopularMovieResponseModel.fromJson(json.decode(fixture("movie.json")));
+      PopularMovieResponseModel.fromJson(json.decode(fixture("popular_movie.json")));
   final _upcomingModel = UpcomingMoviesResponseModel.fromJson(
       json.decode(fixture("upcoming_movie.json")));
   MoviesPopularRequestParams? params;
@@ -44,10 +44,10 @@ void main() {
         return HttpResponse<PopularMovieResponseModel>(
             _model,
             client.Response<String>(
-                data: fixture('movie.json'),
+                data: fixture('popular_movie.json'),
                 statusCode: 200,
                 requestOptions: client.RequestOptions(
-                    data: fixture('movie.json'), path: "")));
+                    data: fixture('popular_movie.json'), path: "")));
       });
 
       //  Act
