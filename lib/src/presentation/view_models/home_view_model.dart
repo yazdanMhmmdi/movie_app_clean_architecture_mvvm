@@ -6,7 +6,7 @@ import '../../domain/domain.dart';
 
 class HomeViewModel extends ChangeNotifier {
   HomeViewModel(this._upcomingMovieUseCase, this._popularMoviesUseCase) {
-    getMovies();
+    // getMovies();
   }
 
   final GetUpcomingMovieUseCase _upcomingMovieUseCase;
@@ -19,13 +19,16 @@ class HomeViewModel extends ChangeNotifier {
   List<Movie>? _popularMovies = [];
 
   //  Events
-  void getMovies() async {
-    final upcomingMoviesResult = await _upcomingMovieUseCase(
-        MovieUpcomingRequestParams(language: 'fa-IR'));
+  Future<void> getMovies({
+    required MovieUpcomingRequestParams? upcomingRequestParams,
+    required MoviesPopularRequestParams? popularRequestParams,
+  }) async {
+    final upcomingMoviesResult =
+        await _upcomingMovieUseCase(upcomingRequestParams);
 
-    final popularMoviesResult = await _popularMoviesUseCase(
-        MoviesPopularRequestParams(language: 'fa-IR'));
-
+    final popularMoviesResult =
+        await _popularMoviesUseCase(popularRequestParams);
+//MoviesPopularRequestParams(language: 'fa-IR')
     upcomingMoviesResult.fold((left) {
       error = true;
       loading = false;
