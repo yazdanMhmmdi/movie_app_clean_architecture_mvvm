@@ -22,7 +22,6 @@ void main() {
 
   UpcomingMoviesResponseModel? upcomingModel = UpcomingMoviesResponseModel(
       page: 1, results: [MovieModel(title: "test"), MovieModel(title: "test")]);
-  ;
 
   setUp(() {
     mockMovieApiService = MockMovieApiService();
@@ -30,58 +29,86 @@ void main() {
     upcomingParams = MovieUpcomingRequestParams();
     sut = MovieRepositoryImpl(mockMovieApiService!);
   });
-
-  group("get popular repository from server", () {
-    test("should success and get PopularMovieResponseModel from api service",
-        () async {
-      //  Arrange
-      when(mockMovieApiService!.getPopularMoviesFromApiService(popularParams))
-          .thenAnswer((v) async {
-        return model;
+  group("movie repository", () {
+    group("get popular repository from server", () {
+      test("should success and get PopularMovieResponseModel from api service",
+          () async {
+        //  Arrange
+        when(mockMovieApiService!.getPopularMoviesFromApiService(popularParams))
+            .thenAnswer((v) async {
+          return model;
+        });
+        //  Act
+        final result = await sut!.getPopularMovies(popularParams!);
+        //  Assert
+        verify(sut!.getPopularMovies(popularParams!));
+        expect(result, equals(Right(model)));
       });
-      //  Act
-      final result = await sut!.getPopularMovies(popularParams!);
-      //  Assert
-      verify(sut!.getPopularMovies(popularParams!));
-      expect(result, equals(Right(model)));
-    });
 
-    test("should throw ServerException and return ServerFailure", () async {
-      //  Arrange
-      when(mockMovieApiService!.getPopularMoviesFromApiService(any))
-          .thenThrow(ServerException());
+      test("should throw ServerException and return ServerFailure", () async {
+        //  Arrange
+        when(mockMovieApiService!.getPopularMoviesFromApiService(any))
+            .thenThrow(ServerException(message: ""));
 
-      //  Act
-      final result = await sut!.getPopularMovies(popularParams!);
-      //  Assert
-      expect(result, Left(ServerFailure()));
-    });
-  });
-
-  group("get upcoming repository from server", () {
-    test("should success and get UpcomingMovieResponseModel from api service",
-        () async {
-      //  Arrange
-      when(mockMovieApiService!.getUpcomingMoviesFromApiService(upcomingParams))
-          .thenAnswer((v) async {
-        return upcomingModel;
+        //  Act
+        final result = await sut!.getPopularMovies(popularParams!);
+        //  Assert
+        expect(result, Left(ServerFailure()));
       });
-      //  Act
-      final result = await sut!.getUpcomingMovies(upcomingParams!);
-      //  Assert
-      verify(sut!.getUpcomingMovies(upcomingParams!));
-      expect(result, equals(Right(upcomingModel)));
+
+      test(
+          "should throw ServerException with 404 error and return ServerFailure",
+          () async {
+        //  Arrange
+        when(mockMovieApiService!.getPopularMoviesFromApiService(any))
+            .thenThrow(ServerException(message: "404 error"));
+
+        //  Act
+        final result = await sut!.getPopularMovies(popularParams!);
+        //  Assert
+        expect(result, Left(ServerFailure(message: "404 error")));
+      });
     });
 
-    test("should throw ServerException and return ServerFailure", () async {
-      //  Arrange
-      when(mockMovieApiService!.getUpcomingMoviesFromApiService(any))
-          .thenThrow(ServerException());
+    group("get upcoming repository from server", () {
+      test("should success and get UpcomingMovieResponseModel from api service",
+          () async {
+        //  Arrange
+        when(mockMovieApiService!
+                .getUpcomingMoviesFromApiService(upcomingParams))
+            .thenAnswer((v) async {
+          return upcomingModel;
+        });
+        //  Act
+        final result = await sut!.getUpcomingMovies(upcomingParams!);
+        //  Assert
+        verify(sut!.getUpcomingMovies(upcomingParams!));
+        expect(result, equals(Right(upcomingModel)));
+      });
 
-      //  Act
-      final result = await sut!.getUpcomingMovies(upcomingParams!);
-      //  Assert
-      expect(result, Left(ServerFailure()));
+      test("should throw ServerException and return ServerFailure", () async {
+        //  Arrange
+        when(mockMovieApiService!.getUpcomingMoviesFromApiService(any))
+            .thenThrow(ServerException(message: ""));
+
+        //  Act
+        final result = await sut!.getUpcomingMovies(upcomingParams!);
+        //  Assert
+        expect(result, Left(ServerFailure()));
+      });
+
+      test(
+          "should throw ServerException with 404 error and return ServerFailure",
+          () async {
+        //  Arrange
+        when(mockMovieApiService!.getUpcomingMoviesFromApiService(any))
+            .thenThrow(ServerException(message: "404 error"));
+
+        //  Act
+        final result = await sut!.getUpcomingMovies(upcomingParams!);
+        //  Assert
+        expect(result, Left(ServerFailure(message: "404 error")));
+      });
     });
   });
 }

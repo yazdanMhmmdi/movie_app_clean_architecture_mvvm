@@ -26,8 +26,8 @@ class MovieApiService extends RemoteApiService {
       } else {
         throw ServerException();
       }
-    } catch (err) {
-      throw ServerException(message: err.toString());
+    } catch (error) {
+      throw ServerException(message: error.toString());
     }
   }
 
@@ -46,8 +46,8 @@ class MovieApiService extends RemoteApiService {
       } else {
         throw ServerException();
       }
-    } catch (err) {
-      throw ServerException(message: err.toString());
+    } catch (error) {
+      throw ServerException(message: error.toString());
     }
   }
 }

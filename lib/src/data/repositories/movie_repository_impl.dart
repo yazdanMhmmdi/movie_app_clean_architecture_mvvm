@@ -18,8 +18,8 @@ class MovieRepositoryImpl implements MovieRepository {
           await _movieApiService.getPopularMoviesFromApiService(params);
 
       return Right(response);
-    } on ServerException {
-      return Left(ServerFailure());
+    } on ServerException catch (error) {
+      return Left(ServerFailure(message: error.message.toString()));
     }
   }
 
@@ -31,8 +31,8 @@ class MovieRepositoryImpl implements MovieRepository {
           await _movieApiService.getUpcomingMoviesFromApiService(params);
 
       return Right(response);
-    } on ServerException {
-      return Left(ServerFailure());
+    } on ServerException catch (error) {
+      return Left(ServerFailure(message: error.message.toString()));
     }
   }
 }
